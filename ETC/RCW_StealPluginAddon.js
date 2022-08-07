@@ -51,7 +51,6 @@ Stealable_Handler.prototype.add = function(itemId, num, percent, type) {
 };
 
 Stealable_Handler.prototype.canSteal = function() {
-	console.log(this._stealable)
     for (n = 0; n < this._stealable.length; n++) {
         if(this._stealable[n].canSteal()) {
             return true;
@@ -176,8 +175,6 @@ Window_BattleLog.prototype.displaySteal = function(target) {
 Game_Action.prototype.itemEffectSteal = function(target,effect,stealall) {
     // go through target and roll against per chance to steal items
     // check to see if there is anything to steal
-	console.log("here")
-	console.log(target)
     target.result().robbed = true;
     if (target.canSteal()) {       
         var stolenItems;
@@ -191,7 +188,6 @@ Game_Action.prototype.itemEffectSteal = function(target,effect,stealall) {
             target.result().robmissed = true;
         }
         for (var n = 0; n < stolenItems.length; n++) {
-			console.log(stolenItems[n])
             target.result().stolen.push(stolenItems[n]);
 			switch(stolenItems[n][1]){
 				case 1:
@@ -220,7 +216,6 @@ Game_Enemy.prototype.recoverAll2 = function() {
 Game_Enemy.prototype.recoverAll = Game_Enemy.prototype.recoverAll2;
 
 Game_Action.prototype.applyItemEffect2 = function(target, effect) {
-	console.log(target)
     this.applyItemEffectOrg(target, effect);
     switch (effect.code) {
     case Game_Action.EFFECT_STEAL_ONE:      
